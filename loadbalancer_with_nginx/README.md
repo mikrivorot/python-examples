@@ -4,15 +4,15 @@ To install nginx:
 brew install nginx
 ```
 
-To manage nginx - note, `brew` is not showing errors, read: https://stackoverflow.com/questions/38040732/homebrew-nginx-not-running-but-says-it-is-in-brew-services (nginx is failing to launch because of an error, but brew-services is not communicating that to you)
+
 
 To start nginx
 
+NOTE: `brew` is not showing errors, read: https://stackoverflow.com/questions/38040732/homebrew-nginx-not-running-but-says-it-is-in-brew-services (nginx is failing to launch because of an error, but brew-services is not communicating that to you)
+
 ```
-# do not use brew services start nginx
 sudo nginx
 ```
-
 To check if nginx is running
 
 ```
