@@ -1,11 +1,14 @@
+# need postgres installation to install psycopg2
 import psycopg2
-
+from dotenv import load_dotenv
+load_dotenv()
+import os
 connection = psycopg2.connect(
-    host = 'localhost',
-    database = 'mydatabase_first_test',
-    user = 'postgres',
-    password = '<password>', # config file?
-    port = 5432
+    host = os.getenv('DB_HOST'), 
+    user = os.getenv('DB_USERNAME'), 
+    password = os.getenv('DB_PASSWORD'), 
+    database = os.getenv('DB_NAME'),
+    port = os.getenv('DB_PORT')
     );
 
 
@@ -14,7 +17,7 @@ connection = psycopg2.connect(
 # Do we have ORMs like Sequelize?
 cursor = connection.cursor();
 cursor.execute('INSERT INTO users (name, email) VALUES (%s, %s)', ('Ivan', 'i@gmail.com'))
-connection.commit()
+connection.commit() # connection.set_session(autocommit=True)
 cursor.execute('SELECT * FROM users');
 rows = cursor.fetchall(); # result is a array of tuples
 for item in rows:
