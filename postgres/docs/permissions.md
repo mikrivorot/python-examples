@@ -31,7 +31,7 @@ Check permissions for the role:
 ```
 \du
 ```
-![alt text](image-9.png)
+![alt text](../screenshots/image-9.png)
 
 Grant this role permission to connect to the database `mydatabase_first_test`:
 
@@ -43,7 +43,7 @@ GRANT CONNECT ON DATABASE mydatabase_first_test TO web_app;
 ```
 \c mydatabase_first_test
 ```
-![](image-10.png)
+![](../screenshots/image-10.png)
 Give the role usage access to our public schema
 
 > Like in many other database management systems, the public schema in PostgreSQL is created by default when initializing a new database and cannot be removed. It serves as a default schema and contains system objects and functions that are accessible to all users. While you cannot remove the public schema, you can still create additional custom schemas and organize your database objects within them.
@@ -52,7 +52,7 @@ Give the role usage access to our public schema
 GRANT USAGE ON SCHEMA public TO web_app;
 ```
 
-![alt text](image-11.png)
+![alt text](../screenshots/image-11.png)
 
 Grant full access to specific tables or to all tables in DB
 
@@ -67,7 +67,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE
 ON ALL TABLES IN SCHEMA public 
 TO web_app;
 ```
-![alt text](image-12.png)
+![alt text](../screenshots/image-12.png)
 
 Now create user and grant role to it:
 
