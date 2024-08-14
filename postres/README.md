@@ -1,4 +1,4 @@
-# Postgres image
+# Postgresql image
 Pull docker image, start docker container for pg:
 
 ```
@@ -47,9 +47,11 @@ docker run -p 5555:80 --name pg-admin -e PGADMIN_DEFAULT_EMAIL="<email>" -e PGAD
 
 ![alt text](image-2.png)
 
-Connect to postgresql container runnning on the same mashine, use `host.docker.internal` as host name/address:
+Connect to postgresql container running on the same machine, use `host.docker.internal` as host name/address:
 
 ![alt text](image-3.png)
+
+
 
 # Inside container
 
@@ -104,3 +106,5 @@ export PATH=/Applications/Postgres.app/Contents/Versions/@latest/bin/:$PATH
 
 
 https://www.psycopg.org/docs/
+
+

@@ -16,8 +16,8 @@ connection = psycopg2.connect(
 # What is a cursor? What is a cursor factory? 
 # Do we have ORMs like Sequelize?
 cursor = connection.cursor();
-cursor.execute('INSERT INTO users (name, email) VALUES (%s, %s)', ('Ivan', 'i@gmail.com'))
-connection.commit() # connection.set_session(autocommit=True)
+#cursor.execute('INSERT INTO users (name, email) VALUES (%s, %s)', ('Ivan', 'i@gmail.com'))
+#connection.commit() # connection.set_session(autocommit=True)
 cursor.execute('SELECT * FROM users');
 rows = cursor.fetchall(); # result is a array of tuples
 for item in rows:
