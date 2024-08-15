@@ -19,7 +19,7 @@ pipreqs /<projectlocation>
 
 3. Install dependencies
 ```
-pip install -r requirements.txt -t <path-to-the-lib-directory>
+pip install -r requirements.txt 
 ```
 
 # Anaconda

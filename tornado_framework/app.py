@@ -1,9 +1,9 @@
 
 import tornado.web # import request handlers
 import tornado.ioloop # import a thread which will continiously listen to port
-from handlers import BasicRequestHandler, ListRequestHandler, QueryParamRequestHandler, ResourceParamRequestHandler, LisArrayRequestHandler, MainRequestHandler, UploadImgHandler, \
-    ImageHandler
+from handlers import BasicRequestHandler, ListRequestHandler, QueryParamRequestHandler, ResourceParamRequestHandler, LisArrayRequestHandler, UploadFileHandler, RenderHandler
 from helpers import PathHandler
+from stateful_handlers import *
 
     
 # In Python, __name__ is a special variable assigned to the name of the Python module by the interpreter.
@@ -12,15 +12,19 @@ from helpers import PathHandler
 if __name__ == "__main__":
     app = tornado.web.Application([
         # raw string '/', an actual backslash and not part of an escape code
-        (r"/main", MainRequestHandler),
+        # (r"/main", MainRequestHandler),
         (r"/", BasicRequestHandler),
         (r"/animal", ListRequestHandler),
         (r"/list", LisArrayRequestHandler),
         (r"/isEven", QueryParamRequestHandler),
         (r"/students/([A-Za-z]+)/([0-9]+)", ResourceParamRequestHandler),
-        (r"/upload", UploadImgHandler),
+        (r"/upload", UploadFileHandler),
         # Note: path depends on root path defined by Vscode, so we use helper
-        (r"/img/(.*)", ImageHandler, {'path': PathHandler.get_folder_path('upload')}), 
+        (r"/img/(.*)", RenderHandler, {'path': PathHandler.get_folder_path('upload')}),  # path will be root for absolute path in StaticFileHandler
+        ("/stateful", getHandler),
+        ("/stateful/connect", connectHandler),
+        ("/stateful/read", readHandler),
+        ("/stateful/close", closeHandler)
     ])
     
     port = 8882 # Everything lower 1000 reserved for the system
