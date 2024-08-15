@@ -15,11 +15,18 @@ connection = psycopg2.connect(
 # SQL queries
 # What is a cursor? What is a cursor factory? 
 # Do we have ORMs like Sequelize?
-cursor = connection.cursor();
+
+cursor = connection.cursor(); # client-side cursor, so we will do caching here, on client, OK for huge select queries
+# + minimize overhead on server-side
+# - client might have not enough memory to story fetched data
+
+# cursor = connection.cursor(<name>); will be server-side cursor
+
 #cursor.execute('INSERT INTO users (name, email) VALUES (%s, %s)', ('Ivan', 'i@gmail.com'))
 #connection.commit() # connection.set_session(autocommit=True)
 cursor.execute('SELECT * FROM users');
 rows = cursor.fetchall(); # result is a array of tuples
+# what os the difference between cursor.fetchmany(50) and cursor.execute('SELECT * FROM users LIMIT 50');
 for item in rows:
     print(f"id={item[0]}, name={item[1]}, email={item[2]}")
 
